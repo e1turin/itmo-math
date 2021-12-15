@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LAB-5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%>>>>>>>>>>>>>>>>>>>>>>>>>> ПЕРЕМЕННЫЕ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%>>>>> Информация о кафедре
+%\newcommand{\year}{2021 г.}  % Год устанавливается автоматически
+\newcommand{\city}{Санкт-Петербург}  %  Футер, нижний колонтитул на титульном листе
+\newcommand{\university}{Национальный исследовательский университет ИТМО}  % первая строка
+\newcommand{\department}{Факультет программной инженерии и компьютерной техники}  % Вторая строка
+\newcommand{\major}{Направление системного и прикладного программного обеспечения}  % Треьтя строка
+%<<<<< Информация о кафедре
+
+%>>>>> Назание работы
+\newcommand{\lab}{Домашняя работа}
+\newcommand{\labnumber}{}                    % порядковый номер работы
+\newcommand{\subject}{Математика}         % учебный предмет
+\newcommand{\labtheme}{Пределы}            % Тема лабораторной работы
+\newcommand{\variant}{№ 24}                % номер варианта работы
+
+\newcommand{\student}{Тюрин Иван Николаевич}    % определение ФИО студента
+\newcommand{\studygroup}{P3110}                 % определение учебной группы 
+\newcommand{\teacher}{Холодова С. Е.\\[1mm]     % ФИО лектора
+                        }          % ФИО практика
+%<<<<<<<<<<<<<<<<<<<<<<<<<< ПЕРЕМЕННЫЕ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+%>>>>>>>>>>>>>>>>>>>>>> ПРЕАМБУЛА >>>>>>>>>>>>>>>>>>>>>>>>>
+\include{preamble}
+%<<<<<<<<<<<<<<<<<<<<<< ПРЕАМБУЛА <<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
+%%%%%%%%%%%%%%%%%%% СОДЕРЖИМОЕ ОТЧЕТА %%%%%%%%%%%%%%%%%%%%%
+%>>>>>>>>>>>>>>> ''''''''''''''''''''''' >>>>>>>>>>>>>>>>>>
+\begin{document}
+
+
+%>>>>>>>>>>>>>>>> ОПРЕДЕЛЕНИЕ НАЗВАНИЙ >>>>>>>>>>>>>>>>>>>>
+% Переоформление некоторых стандартных названий
+%\renewcommand{\chaptername}{Лабораторная работа}
+\renewcommand{\chaptername}{\lab\ \labnumber} % переименование глав
+\def\contentsname{Содержание} % переименование оглавления
+\newcommand{\eps}{\varepsilon}
+\newcommand{\fr}{\cfrac}
+\newcommand{\fc}{\frac}
+\newcommand{\rt}{\right}
+\newcommand{\lt}{\left}
+\newcommand{\Rarr}{\Rightarrow}
+\newcommand{\rarr}{\xrightarrow{}}
+\newcommand{\limit}{\displaystyle\lim}
+\newcommand{\oo}{\infty}
+\makeatletter
+\newcommand{\xRightarrow}[2][]{\ext@arrow 0359\Rightarrowfill@{#1}{#2}}
+\makeatother
+%<<<<<<<<<<<<<<<< ОПРЕДЕЛЕНИЕ НАЗВАНИЙ <<<<<<<<<<<<<<<<<<<<
+
+
+%>>>>>>>>>>>>>>>>> ТИТУЛЬНАЯ СТРАНИЦА >>>>>>>>>>>>>>>>>>>>>
+\include{titlepage}
+%<<<<<<<<<<<<<<<<< ТИТУЛЬНАЯ СТРАНИЦА <<<<<<<<<<<<<<<<<<<<<
+
+
+%>>>>>>>>>>>>>>>>>>>>> СОДЕРЖАНИЕ >>>>>>>>>>>>>>>>>>>>>>>>>
+% Содержание
+\tableofcontents
+%<<<<<<<<<<<<<<<<<<<<< СОДЕРЖАНИЕ <<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+%%%%%%%%%%%%%%%%%%%%%%% КОД РАБОТЫ %%%%%%%%%%%%%%%%%%%%%%%%
+%>>>>>>>>>>>>>>>>>>>'''''''''''''''''>>>>>>>>>>>>>>>>>>>>>
+\newpage
+\Chapter{\lab\labnumber}{\labtheme}{}
+
+\Section{Задание 1}
+\textbf{1.24.} Доказать, что $\limit _{n\to \infty} a_n = a$ (указать $N(\varepsilon)$.
+$$a_n = \cfrac{5n+1}{10n-3}, a=\cfrac 1 2$$
+\textit{Доказательство:} по определению предела:\\ $\forall\varepsilon>0:\exists N(\varepsilon) \in \mathbb{N}: \forall n: n\geqslant N(\varepsilon):|a_n-a|<\varepsilon.$ \\
+Т.е.$ \left|\cfrac{5n+1}{10n-3}-\cfrac 1 2\right|<\varepsilon;$
+$\Rightarrow \left|\cfrac{2(5n+1)-(10n-3)}{2(10n-3)}\right|<\varepsilon$
+$\Rightarrow\left|\cfrac{5}{2(10n-3)}\right|<\eps$
+$\Rarr\fr{5}{2(10n-3)}<\eps$ $\Rarr n>\fr 1 {10} \lt(\fr 5 {2\eps} - 3 \rt)$. Значит по определению предела, при $N(\eps)=\lt[\fr 1 {10} \lt(\fr 5 {2\eps} -3\rt)\rt]+1$ ряд имеет предел.
+
+\Section{Задание 2}
+\textbf{2.24.} Вычислить предел числовой последовательности:\\
+$\limit_{n\to \oo}\fr{(n+1)^4-(n-1)^4}{(n+1)^3+(n-1)^3}=\limit_{n\to \oo}\fr{((n+1)^2-(n-1)^2)((n+1)^2+(n-1)^2)}{(n+1)^3+(n-1)^3}=\lim_{n\to \oo}\fr{8n(n^2+1)}{(n+1)^3+(n-1)^3}=\limit_{n\to \oo}\fr{\fr 1 {n^3} 8n(n^2+1)}{\lt(\fr{(n+1)^3}{n^3}+\fr{(n-1)^3}{n^3}\rt)}=\limit_{n\to \oo}\fr{8\lt(1+\fr 1 {n^2}\rt)} {\lt(1+\fr 1 n \rt)^3+\lt(1-\fr 1 {n}\rt)^3}=\fr 8 2 = 4$.
+
+\Section{Задание 3}
+\textbf{3.24.} Вычислить предел $\lim_{n\to \oo}\fr {\sqrt[3]{n^2+2}-5n^2}{n-\sqrt{n^4-n+1}}=\lim_{n\to \oo}\fr {n^{\fc 2 3}\sqrt[3]{1+\fr 2 {n^2}}-5n^2}{n-n^2\sqrt{1-\fr 1 {n^3}+\fr 1 {n^4}}}=\lim_{n\to \oo}\fr {\fr 1 {n^{\fc 4 3}}\sqrt[3]{1+\fr 2 {n^2}}-5}{\fr 1 n-\sqrt{1-\fr 1 {n^3}+\fr 1 {n^4}}}=\fr {-5}{-1}=5$.
+
+\Section{Задание 4}
+\textbf{4.24.} $\limit_{n\to \oo}\lt( n-\sqrt{n(n-1)}\rt)=\limit_{n\to \oo}\fr{\lt( n-\sqrt{n(n-1)}\rt)\lt(n+\sqrt{n(n-1)}\rt)}{n+\sqrt{n(n-1)}}=\limit_{n\to \oo}\fr{ n^2-n(n-1)}{ n+\sqrt{n(n-1)}}=\limit_{n\to \oo}\fr{\fc 1 n n}{\fc 1 n \lt( n+\sqrt{n(n-1)}\rt)}=\limit_{n\to \oo}\fr{1}{1 +\sqrt{1-\fc 1 n}}=\fr 1 2$.
+
+\Section{Задание 5}
+\textbf{5.24.}
+$\limit_{n\to \oo} \fr {2+4+6+\ldots+2n}{1+3+5+\ldots+(2n-1)}=\limit_{n\to \oo} \fr {\fr {(2+2n)n}{2}}{\fr{2n\cdot n}{2}}=\limit_{n\to \oo} \fr {2n+2n^2}{2n^2}=\limit_{n\to \oo} \lt(\fr 1 n +1\rt)=1$.
+
+\Section{Задание 6}
+\textbf{6.24.} 
+$\limit_{n\to \oo}\lt(\fr{n+4}{n+2}\rt)^n=\limit_{n\to \oo}\lt(1+\fr{2}{n+2}\rt)^n=\limit_{n\to \oo}\lt(1+\fr{2}{n+2}\rt)^{\fr{n+2}{2}\cdot\fr{2}{n+2}\cdot n}=\limit_{n\to \oo} e^{\fr{2n}{n+2}}=(e)^{\limit_{n\to \oo} \fr{2n}{n+2}}=\lt(e\rt)^{\limit_{n\to \oo} \fr{2}{1+\fc 2 n}}=e^2$.
+
+\Section{Задание 7}
+\textbf{7.24.} Доказать$\limit_{x\to -1}\fr{7x^2+8x+1}{x+1}=-6$
+\textit{Доказательство: } по определению предела функции в точке: \\$\forall \eps>0:\exists \delta=\delta(\eps)>0:\forall x:\lt(0<\lt|x-(-1)\rt|<\delta\rt) \Rarr \lt(\lt|\fr {7x^2+8x+1} {x+1}-(-6)\rt|<\eps\rt)$\\
+Тогда $\lt|\fr{7x^2+8x+1}{x+1}+6\rt|<\eps$ $\Rarr \lt|\fr{7x^2+7x+x+1}{x+1}+6 \rt|=\lt|7x+1+6 \rt|=7|x+1|<\eps\Rarr |x+1|<\fc \eps 7 \lt(|x+1|=\lt|x-(-1)\rt|<\delta\rt) \Rarr \delta(\eps)=\fr \eps 7$ Следовательно функция имеет приедел равный $-6$ при $x\to -1$.
+
+\Section{Задание 8}
+\textbf{8.24.} Доказать, что функция $f(x)=-5x^2-7$ непрерывна в точке $x_0=1$ (найти $\delta(\eps)$):
+Чтобы доказать, что функция непрерывна в точке, нужно доказать что она имеет предел в этой точке и ее значение в этой точке равно пределу.  $f(1)=-12$\\
+По определению предела функции в точке: \\$\limit_{x\to 1}(-5x^2-7)=-12 \Leftrightarrow \forall \eps>0:\exists \delta=\delta(\eps)>0:\forall x:\lt(0<\lt|x-1\rt|<\delta\rt) \Rarr \lt(\lt|-5x^2-7-(-12)\rt|<\eps\rt)$\\
+Тогда $\lt|-5x^2-7+12\rt|<\eps \Rarr 5|x^2-1|<\eps \Rarr |(x-1)(x+1)|<\fr \eps 5\\ \Rarr |(x-1)(x-1+2)|<\fr \eps 5 \Rarr |(x-1)^2+2(x-1)|<\fr \eps 5 \xRightarrow{(x-1)^2\geqslant0} |x-1|^2+2|x-1|<\fr \eps 5 \\\Rarr |x-1|^2+2|x-1|- \fr \eps 5 <0 \xRightarrow{D=4+4\fc \eps 5} -1-\sqrt{D}<|x-1|<-1+\sqrt{D} \Rarr |x-1|<-1+\sqrt{4+4\fr \eps 5}; (\lt|x-1\rt|<\delta) \Rarr \delta(\eps)=-1+\sqrt{4+4\fr \eps 5}$.\\
+Функция имеет предел в точке равный ее занчению в не, значит функция непрерывна в точке $x=1$.
+
+\Section{Задание 9}
+\textbf{9.24.}$\limit_{x\to -1} \fr {x^2+3x+2}{x^3+2x^2-x-2}=\limit_{x\to -1} \fr {(x+2)(x+1)}{(x+2)(x+1)(x-1)}=\limit_{x\to -1} \fr {1}{x-1}=\fr 1 {-2} = -0,5$.
+
+\Section{Задание 10}
+\textbf{10.24.} $\limit_{x\to 0}\fr {\sqrt[3]{8+3x-x^2}-2}{\sqrt[3]{x^2+x^3}}=\xrightarrow{\text{Домножим до разности кубов}}=\\
+=\limit_{x\to 0}\fr {8+3x-x^2-8}{\sqrt[3]{x^2}\cdot\sqrt{1+x}\lt(\sqrt[3]{(8+3x-x^2)^2}+2\sqrt[3]{8+3x-x^2}+4\rt)}=\\
+=\limit_{x\to 0}\fr {\sqrt[3]{x}(3-x)}{\sqrt{1+x}\lt(\sqrt[3]{(8+3x-x^2)^2}+2\sqrt[3]{8+3x-x^2}+4\rt)}=0$.
+
+\Section{Задание 11}
+\textbf{11.24.} $\limit_{x\to 0} \fr {1+\cos(x-\pi)} {(e^{3x}-1)^2}=\limit_{x\to 0} \fr {1-\cos(x)}{(3x)^2}= \limit_{x\to 0} \fr {\fr {x^2} 2}{(3x)^2} = \limit_{x\to 0} \fr {x^2}{2\cdot 9x^2}=\fr 1 {18}$.
+
+
+
+\Section{Задание 12}
+\textbf{12.24.} $\limit_{x\to\pi} \fr {1-\sin\lt(\fr x 2\rt)}{\pi - x}\xRightarrow{x=t+\pi}\limit_{t\to 0} \fr {1-\sin\lt(\fr {t+\pi} 2\rt)}{-t}=\limit_{t\to 0} \fr {1-\cos\lt(\fr {t} 2\rt)}{-t}=\limit_{t\to 0} \fr {\fr {t^2} 8}{-t}=\\
+=\limit_{t\to 0} \fr {t} {-8}=0$.
+
+\Section{Задание 13}
+\textbf{13.24.} $\limit _{x\to -1} \fr {\tg (x+1)}{e^{\sqrt[3]{x^3-4x^2+6}}-e}\xRightarrow{x=y-1}\limit _{y\to 0} \fr {\tg y}{e^{\sqrt[3]{(y-1)^3-4(y-1)^2+6}}-e}=\limit _{y\to 0} \fr {\tg y}{e^{\sqrt[3]{y^3-7y^2+11y+1}}-e}=\limit _{y\to 0} \fr y {e(e^{\sqrt[3]{y^3-7y^2+11y+1}-1}-1)}=\limit _{y\to 0} \fr y {e(\sqrt[3]{y^3-7y^2+11y+1}-1)}\xrightarrow{\text{Домножим до разности кубов}}\\
+\limit _{y\to 0} \fr {y\lt(\sqrt[3]{(y^3-7y^2+11y+1)^2}+\sqrt[3]{y^3-7y^2+11y+1}+1\rt)} {e(y^3-7y^2+11y)}= \limit _{y\to 0} \fr {\lt(\sqrt[3]{(y^3-7y^2+11y+1)^2}+\sqrt[3]{y^3-7y^2+11y+1}+1\rt)} {e(y^2-7y+11)}=\fr 3 {11e}$.
+
+\Section{Задание 14}
+\textbf{14.24.} $\limit_{x\to 0}\fr {e^x-e^{3x}} {\sin 3x-\tg 2x}=\limit_{x\to 0}\fr {(e^x-1)-(e^{3x}-1)} {\sin 3x-\tg 2x}=\limit_{x\to 0}\fr {x-3x} {3x-2x}=\limit_{x\to 0}\fr {-2x} {x}=-2$.
+
+\Section{Задание 15}
+\textbf{15.24.} $\limit_{x\to \fc \pi 6} \fr{2\sin^x+\sin x-1}{2\sin^2 x-3\sin x+1}=\limit_{x\to \fc \pi 6} \fr{2(\sin-\fc 1 2)(\sin + 1)}{2(\sin-\fc 1 2)(\sin - 1)}=\limit_{x\to \fc \pi 6} \fr{\sin + 1}{\sin - 1}=\fr {\fc 1 2 +1}{\fc 1 2 -1}=-3$.
+
+\Section{Задание 16}
+\textbf{16.24.} $\limit_{x\to 0} \lt(2-e^{x^2}\rt)^ {\fr 1 {1-\cos \pi x}}=\limit_{x\to 0} \lt(e^{\ln(2-e^{x^2}}\rt)^{\fr 1 {1-\cos \pi x}}=\limit_{x\to 0} e^{\fr {\ln(2-e^{x^2})}{1-\cos \pi x}}=(e)^{\limit_{x\to 0} \fr {\ln(1-(e^{x^2}-1)}{1-\cos \pi x}}=(e)^{\limit_{x\to 0} \fr {-(e^{x^2}-1)}{\fc {(\pi x)^2}{2}}}= (e)^{\limit_{x\to 0} \fr {-(x^2)}{\fc {(\pi x)^2}{2}}}=e^{-\fc {2}{\pi^2}}$.
+
+\Section{Задание 17}
+\textbf{17.24.} $\limit_{x\to 0}\lt(\fr {\arctg 3x }{x}\rt)^{x+2}=\limit_{x\to 0}\lt(\fr {3x }{x}\rt)^{0+2}=3^{2}=9$.
+
+\Section{Задание 18}
+\textbf{18.24.} $\limit_{x\to\fc \pi 2}\lt(\ctg\lt(\fr x 2\rt)\rt)^{\fr {1} {\cos x}} \xRightarrow{x=2y+\fc \pi 2} \limit_{y\to 0}\lt(\ctg\lt(\fr {2y+\fc \pi 2} 2\rt)\rt)^{\fr {1} {\cos (2y+\fc \pi 2)}}= 
+\limit_{y\to 0}\lt(\ctg\lt( y+\fc \pi 4 \rt)\rt)^{- \fr {1} {\sin 2y}}=\limit_{y\to 0}\lt(e^{\ln\ctg\lt( y+\fc \pi 4 \rt)}\rt)^{- \fr {1} {\sin 2y}}=
+\lt(e\rt)^{\limit_{y\to 0}-\fr{1} {\sin 2y}\ln\fr {1}{\tg\lt( y+\fc \pi 4 \rt)}}=
+\lt(e\rt)^{\limit_{y\to 0}-\fr{1} {\sin 2y}\ln\lt(1-\fr {2\tg y}{\tg y + 1}\rt)}=
+\lt(e\rt)^{\limit_{y\to 0}-\fr{1} {2y}\ln\lt(1-\fr {2y}{y + 1}\rt)}=
+\lt(e\rt)^{\limit_{y\to 0}-\fr{1} {2y} \lt(\fr {-2y}{y + 1}\rt)}=
+\lt(e\rt)^{\limit_{y\to 0} \fr{1} {y + 1}}=e$.
+
+\Section{Задание 19}
+\textbf{19.24.} $\limit_{x\to 1}\lt(\fr{e^{\sin \pi x}-1}{x-1}\rt)^{x^2+1}=
+\limit_{x\to 1}\lt(\fr{e^{\sin \pi x}-1}{x-1}\rt)^2\xRightarrow{x=y+1}
+\lt(\limit_{y\to 0}\fr{e^{\sin \pi (y+1)}-1}{y}\rt)^2=
+\lt(\limit_{y\to 0}\fr{e^{- \sin \pi y}-1}{y}\rt)^2=
+\lt(\limit_{y\to 0}\fr{- \sin \pi y}{y}\rt)^2=
+\lt(\limit_{y\to 0}\fr{-\pi y}{y}\rt)^2=\pi^2$.
+
+\Section{Задание 20}
+\textbf{20.24.} $\limit_{x\to0}\sqrt{(e^{\sin x}-1)\cos\lt(\fr 1 x\rt)+4\cos x}
+\xRightarrow{(|\cos\fc 1 x|\leqslant 1)\ \vee\ (e^{\sin x}\to 1)}
+\limit_{x\to0}\sqrt{0+4\cos x}=\sqrt{4}=2$.
+
+\Section{Вывод}
+Повторил определение пределов числовой последовательности и функции в точке. Научился вычислять пределы числовых последовательностей и функций, укрепил знание об эквивалентных функциях при $x\to0$.
+
+
+\newpage
+%<<<<<<<<<<<<<<<<<<<<<< КОД РАБОТЫ <<<<<<<<<<<<<<<<<<<<<<<<
+
+
+%>>>>>>>>>>>>>>>> СПИСОК ЛИТЕРАТУРЫ >>>>>>>>>>>>>>>>>>>>>>>
+%\include{biblist}  % Для соответсвия гост, придется доработать. Нужен файл .bib
+%<<<<<<<<<<<<<<<<<<<< СПИСОК ЛИТЕРАТУРЫ <<<<<<<<<<<<<<<<<<<
+
+
+\end{document}
+%<<<<<<<<<<<<<<<< ,,,,,,,,,,,,,,,,,,,,,,, <<<<<<<<<<<<<<<<<
+%<<<<<<<<<<<<<<<<<<< СОДЕРЖИМОЕ ОТЧЕТА <<<<<<<<<<<<<<<<<<<<
